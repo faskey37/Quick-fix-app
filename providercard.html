@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickFix Pro - Service Provider Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #3f37c9;
+      --accent: #4895ef;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #4cc9f0;
+      --warning: #f72585;
+      --danger: #ef233c;
+      --electrician: #7209b7;
+      --plumber: #4361ee;
+      --carpenter: #f8961e;
+      --ac-repair: #2ec4b6;
+      --tutor: #06d6a0;
+      --beautician: #f72585;
+      --gray: #6c757d;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f5f7ff;
+      color: var(--dark);
+    }
+    
+    /* Header & Navigation */
+    header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .logo i {
+      font-size: 1.8rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    /* Main Content */
+    .provider-profile-container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    
+    /* Provider Header */
+    .provider-header {
+      display: flex;
+      gap: 2rem;
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+    
+    .provider-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+    }
+    
+    .provider-main-info {
+      flex: 1;
+    }
+    
+    .provider-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    
+    .provider-category {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    .electrician-category {
+      background: var(--electrician);
+      color: white;
+    }
+    
+    .plumber-category {
+      background: var(--plumber);
+      color: white;
+    }
+    
+    .carpenter-category {
+      background: var(--carpenter);
+      color: white;
+    }
+    
+    .ac-repair-category {
+      background: var(--ac-repair);
+      color: white;
+    }
+    
+    .tutor-category {
+      background: var(--tutor);
+      color: white;
+    }
+    
+    .beautician-category {
+      background: var(--beautician);
+      color: white;
+    }
+    
+    .provider-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .rating-stars {
+      color: #ffc107;
+    }
+    
+    .rating-count {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    .provider-location {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    
+    .provider-bio {
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    
+    .provider-meta {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .meta-icon {
+      color: var(--primary);
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .btn {
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: rgba(67, 97, 238, 0.1);
+    }
+    
+    /* Tabs */
+    .profile-tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 2rem;
+    }
+    
+    .tab {
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+      color: var(--gray);
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .tab.active {
+      color: var(--primary);
+    }
+    
+    .tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    /* Tab Content */
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* Services Section */
+    .services-section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .service-card {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    
+    .service-card-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .service-card-price {
+      font-weight: bold;
+      color: var(--primary);
+    }
+    
+    .service-card-description {
+      color: var(--gray);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .service-card-duration {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .book-service-btn {
+      width: 100%;
+      text-align: center;
+    }
+    
+    /* About Section */
+    .about-section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    
+    .about-text {
+      line-height: 1.7;
+    }
+    
+    .certifications-list {
+      list-style: none;
+    }
+    
+    .certifications-list li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .certification-icon {
+      color: var(--success);
+      margin-top: 0.2rem;
+    }
+    
+    /* Reviews Section */
+    .reviews-section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+    
+    .review-card {
+      border-bottom: 1px solid #eee;
+      padding: 1.5rem 0;
+    }
+    
+    .review-card:last-child {
+      border-bottom: none;
+    }
+    
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .reviewer-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .reviewer-name {
+      font-weight: 500;
+    }
+    
+    .review-date {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    .review-rating {
+      color: #ffc107;
+    }
+    
+    .review-content {
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+    
+    /* Booking Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .booking-modal {
+      background: white;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+    
+    .modal-overlay.active .booking-modal {
+      transform: translateY(0);
+    }
+    
+    .modal-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    textarea.form-control {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .time-slot {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .time-slot:hover {
+      border-color: var(--accent);
+    }
+    
+    .time-slot.selected {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .modal-footer {
+      padding: 1.5rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .provider-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .provider-meta {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .action-buttons {
+        justify-content: center;
+      }
+      
+      .profile-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      
+      .tab {
+        padding: 1rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <i class="fas fa-tools"></i>
+        <span>QuickFix Pro</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="providers.html">Providers</a>
+        <a href="#">How It Works</a>
+        <a href="#">About</a>
+      </div>
+      <div class="auth-buttons">
+        <button class="btn btn-outline">Login</button>
+        <button class="btn btn-primary">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="provider-profile-container">
+    <!-- Provider Header -->
+    <div class="provider-header">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Provider" class="provider-avatar">
+      <div class="provider-main-info">
+        <h1 class="provider-name">John Electrics</h1>
+        <span class="provider-category electrician-category">Electrician</span>
+        
+        <div class="provider-rating">
+          <div class="rating-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <span class="rating-count">4.9 (124 reviews)</span>
+        </div>
+        
+        <div class="provider-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Serves within 20 miles of New York, NY</span>
+        </div>
+        
+        <p class="provider-bio">
+          Licensed electrician with 8 years of experience in residential and commercial electrical work. 
+          Specializing in wiring, lighting installation, and electrical panel upgrades. 
+          Committed to providing quality service with attention to safety and detail.
+        </p>
+        
+        <div class="provider-meta">
+          <div class="meta-item">
+            <i class="fas fa-briefcase meta-icon"></i>
+            <span>8 years experience</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-check-circle meta-icon"></i>
+            <span>124 jobs completed</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-clock meta-icon"></i>
+            <span>Usually responds in 1 hour</span>
+          </div>
+        </div>
+        
+        <div class="action-buttons">
+          <button class="btn btn-outline">
+            <i class="fas fa-envelope"></i> Message
+          </button>
+          <button class="btn btn-primary" onclick="openBookingModal()">
+            <i class="fas fa-calendar-check"></i> Book Service
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tabs -->
+    <div class="profile-tabs">
+      <div class="tab active" data-tab="services">Services</div>
+      <div class="tab" data-tab="about">About</div>
+      <div class="tab" data-tab="reviews">Reviews (124)</div>
+    </div>
+    
+    <!-- Services Tab -->
+    <div class="tab-content active" id="services-tab">
+      <div class="services-section">
+        <h2 class="section-title">Services Offered</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-card-header">
+              <h3 class="service-card-title">Electrical Wiring</h3>
+              <div class="service-card-price">$85/hour</div>
+            </div>
+            <div class="service-card-description">
+              Professional electrical wiring installation for homes and offices. Includes material cost for standard wiring.
+            </div>
+            <div class="service-card-duration">
+              <i class="fas fa-clock"></i> Typically 2-4 hours
+            </div>
+            <button class="btn btn-primary book-service-btn" onclick="openBookingModal('Electrical Wiring')">
+              Book This Service
+            </button>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-card-header">
+              <h3 class="service-card-title">Light Installation</h3>
+              <div class="service-card-price">$75/hour</div>
+            </div>
+            <div class="service-card-description">
+              Installation of ceiling lights, chandeliers, wall sconces, and outdoor lighting fixtures.
+            </div>
+            <div class="service-card-duration">
+              <i class="fas fa-clock"></i> Typically 1-3 hours
+            </div>
+            <button class="btn btn-primary book-service-btn" onclick="openBookingModal('Light Installation')">
+              Book This Service
+            </button>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-card-header">
+              <h3 class="service-card-title">Outlet Repair</h3>
+              <div class="service-card-price">$65/hour</div>
+            </div>
+            <div class="service-card-description">
+              Repair and replacement of faulty electrical outlets, switches, and GFCI installations.
+            </div>
+            <div class="service-card-duration">
+              <i class="fas fa-clock"></i> Typically 1-2 hours
+            </div>
+            <button class="btn btn-primary book-service-btn" onclick="openBookingModal('Outlet Repair')">
+              Book This Service
+            </button>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-card-header">
+              <h3 class="service-card-title">Panel Upgrade</h3>
+              <div class="service-card-price">$120/hour</div>
+            </div>
+            <div class="service-card-description">
+              Electrical panel upgrades to accommodate increased power demands and modern safety standards.
+            </div>
+            <div class="service-card-duration">
+              <i class="fas fa-clock"></i> Typically 4-6 hours
+            </div>
+            <button class="btn btn-primary book-service-btn" onclick="openBookingModal('Panel Upgrade')">
+              Book This Service
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- About Tab -->
+    <div class="tab-content" id="about-tab">
+      <div class="about-section">
+        <h2 class="section-title">About John Electrics</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>Hello! I'm John, a licensed electrician with over 8 years of experience serving the New York area. I take pride in delivering high-quality electrical services with a focus on safety, reliability, and customer satisfaction.</p>
+            
+            <p>My journey in the electrical field began with a 4-year apprenticeship program, followed by obtaining my master electrician license. I've worked on everything from small residential repairs to large commercial installations.</p>
+            
+            <p>When I'm not helping customers with their electrical needs, you can find me teaching electrical safety workshops at the local community center or spending time with my family.</p>
+            
+            <h3 style="margin-top: 1.5rem;">Service Areas</h3>
+            <p>I serve all of New York City and surrounding areas within a 20-mile radius, including Brooklyn, Queens, and parts of New Jersey.</p>
+          </div>
+          
+          <div>
+            <h3>Certifications</h3>
+            <ul class="certifications-list">
+              <li>
+                <i class="fas fa-certificate certification-icon"></i>
+                <span>Licensed Electrician (State License #EL123456)</span>
+              </li>
+              <li>
+                <i class="fas fa-certificate certification-icon"></i>
+                <span>OSHA 30-Hour Construction Safety Certification</span>
+              </li>
+              <li>
+                <i class="fas fa-certificate certification-icon"></i>
+                <span>NFPA 70E Electrical Safety Certification</span>
+              </li>
+              <li>
+                <i class="fas fa-certificate certification-icon"></i>
+                <span>EPA Lead-Safe Certified</span>
+              </li>
+              <li>
+                <i class="fas fa-certificate certification-icon"></i>
+                <span>First Aid/CPR Certified</span>
+              </li>
+            </ul>
+            
+            <h3 style="margin-top: 1.5rem;">Languages</h3>
+            <p>English (Fluent), Spanish (Conversational)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Reviews Tab -->
+    <div class="tab-content" id="reviews-tab">
+      <div class="reviews-section">
+        <h2 class="section-title">Customer Reviews</h2>
+        
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Reviewer" class="reviewer-avatar">
+              <div>
+                <div class="reviewer-name">Sarah Johnson</div>
+                <div class="review-date">June 15, 2023</div>
+              </div>
+            </div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="review-content">
+            <p>John did an amazing job rewiring our old house. He was punctual, professional, and explained everything clearly. The work was completed on time and within budget. Highly recommend!</p>
+          </div>
+        </div>
+        
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer">
+              <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Reviewer" class="reviewer-avatar">
+              <div>
+                <div class="reviewer-name">Michael Brown</div>
+                <div class="review-date">May 28, 2023</div>
+              </div>
+            </div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="review-content">
+            <p>Excellent service! John installed new lighting throughout our office space. He was efficient and left the place spotless. Will definitely hire him again for future projects.</p>
+          </div>
+        </div>
+        
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Reviewer" class="reviewer-avatar">
+              <div>
+                <div class="reviewer-name">Emily Davis</div>
+                <div class="review-date">April 10, 2023</div>
+              </div>
+            </div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+          <div class="review-content">
+            <p>John fixed several faulty outlets in our home. He was knowledgeable and identified some other potential issues we weren't aware of. Very honest and fair pricing.</p>
+          </div>
+        </div>
+        
+        <button class="btn btn-outline" style="margin-top: 1.5rem; width: 100%;">
+          Load More Reviews
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="booking-modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Book Service</h2>
+        <button class="close-modal" onclick="closeBookingModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="bookingService">Service</label>
+          <input type="text" id="bookingService" class="form-control" readonly>
+        </div>
+        
+        <div class="form-group">
+          <label for="bookingProvider">Provider</label>
+          <input type="text" id="bookingProvider" class="form-control" value="John Electrics" readonly>
+        </div>
+        
+        <div class="form-group">
+          <label for="bookingDate">Date</label>
+          <input type="date" id="bookingDate" class="form-control" min="">
+        </div>
+        
+        <div class="form-group">
+          <label>Available Time Slots</label>
+          <div class="time-slots">
+            <div class="time-slot">9:00 AM</div>
+            <div class="time-slot">10:00 AM</div>
+            <div class="time-slot">11:00 AM</div>
+            <div class="time-slot">12:00 PM</div>
+            <div class="time-slot">1:00 PM</div>
+            <div class="time-slot">2:00 PM</div>
+            <div class="time-slot">3:00 PM</div>
+            <div class="time-slot">4:00 PM</div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="bookingAddress">Service Address</label>
+          <input type="text" id="bookingAddress" class="form-control" placeholder="Enter your address">
+        </div>
+        
+        <div class="form-group">
+          <label for="bookingNotes">Special Instructions</label>
+          <textarea id="bookingNotes" class="form-control" placeholder="Any specific details about the service needed"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeBookingModal()">Cancel</button>
+        <button class="btn btn-primary">Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set minimum date to today
+    document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
+    
+    // Tab functionality
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        document.querySelectorAll('.tab').forEach(t => {
+          t.classList.remove('active');
+        });
+        
+        // Add active class to clicked tab
+        this.classList.add('active');
+        
+        // Hide all tab contents
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        
+        // Show selected tab content
+        const tabId = `${this.dataset.tab}-tab`;
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+    
+    // Time slot selection
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', function() {
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+    
+    // Booking modal functions
+    function openBookingModal(service = '') {
+      document.getElementById('bookingModal').classList.add('active');
+      document.getElementById('bookingService').value = service || 'Electrical Service';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeBookingModal() {
+      document.getElementById('bookingModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside
+    document.getElementById('bookingModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeBookingModal();
+      }
+    });
+  </script>
+</body>
+</html>
