@@ -81,7 +81,7 @@ a {
 
 /* Buttons */
 button {
-    border-radius: 20px;
+    border-radius: 0px;
     border: 1px solid #007bff;
     background-color: #007bff;
     color: #fff;
