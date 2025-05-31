@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | QuickFix Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles (consistent with how-it-works) */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header & Navigation (same as how-it-works) */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* About Sections */
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: var(--white);
+            padding: 60px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Team Section */
+        .team-section {
+            margin-bottom: 80px;
+        }
+        
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .member-role {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        /* CTA Section (same as how-it-works) */
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .cta-section h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        /* Button Styles (same as how-it-works) */
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-download {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-download:hover {
+            background: transparent;
+            color: var(--white);
+        }
+        
+        .btn-browse {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-browse:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+        
+        .btn-auth {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .about-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-tools"></i>
+                <span>QuickFix Pro</span>
+            </a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="service.html">Services</a>
+                <a href="provider.html">Providers</a>
+                <a href="how_it_works.html">How It Works</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-auth btn-outline">Login</a>
+                <a href="login.html" class="btn btn-auth btn-primary">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>About QuickFix Pro</h1>
+            <p>Connecting you with trusted professionals for all your service needs since 2023</p>
+        </div>
+    </section>
+    
+    <main class="container">
+        <!-- Our Story Section -->
+        <section class="about-section">
+            <div class="about-content">
+                <h2 class="section-title">Our Story</h2>
+                <p>Founded in 2023, QuickFix Pro began with a simple mission: to make finding reliable service professionals as easy as ordering food delivery. Our team of tech enthusiasts and service industry veterans came together to solve the frustrations we all face when trying to book quality services.</p>
+                <p>What started as a small local platform has grown into a nationwide service connecting thousands of customers with skilled professionals every day.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Our team working together">
+            </div>
+        </section>
+        
+        <!-- Our Mission Section -->
+        <section class="about-section">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Team meeting">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">Our Mission</h2>
+                <p>At QuickFix Pro, we're transforming the service industry by creating transparent, efficient connections between customers and professionals.</p>
+                <p>We believe everyone deserves:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Instant access to verified professionals</li>
+                    <li>Fair pricing with no hidden fees</li>
+                    <li>Hassle-free booking and payment</li>
+                    <li>Quality service with accountability</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <h2 class="section-title">By The Numbers</h2>
+            <p>Our impact in the service industry</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Verified Professionals</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Service Categories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Customer Support</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2 class="section-title" style="text-align: center;">Meet The Team</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">The passionate people behind QuickFix Pro</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Alex Johnson">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Alex Johnson</h3>
+                        <p class="member-role">Founder & CEO</p>
+                        <p>Former service professional turned tech entrepreneur</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sarah Chen">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Sarah Chen</h3>
+                        <p class="member-role">CTO</p>
+                        <p>Tech wizard with 10+ years in platform development</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Michael Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Rodriguez</h3>
+                        <p class="member-role">Head of Operations</p>
+                        <p>Service industry veteran ensuring quality standards</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Experience QuickFix Pro?</h2>
+            <p>Join our community of satisfied customers and professionals today</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-download">Download App</a>
+                <a href="provider.html" class="btn btn-browse">Become a Provider</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simple animation for team members
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamMembers = document.querySelectorAll('.team-member');
+            
+            teamMembers.forEach((member, index) => {
+                member.style.opacity = '0';
+                member.style.transform = 'translateY(20px)';
+                member.style.transition = `all 0.5s ease ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    member.style.opacity = '1';
+                    member.style.transform = 'translateY(0)';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
