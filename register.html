@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | QuickFix Pro</title>
+    <title>Register | QuickFix Pro</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
@@ -97,7 +97,7 @@
         }
 
         /* Main Content */
-        .login-container {
+        .register-container {
             display: flex;
             flex: 1;
             align-items: center;
@@ -109,7 +109,7 @@
             background-position: center;
         }
 
-        .login-card {
+        .register-card {
             background: var(--white);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -120,7 +120,7 @@
             transition: transform 0.3s ease;
         }
 
-        .login-card:hover {
+        .register-card:hover {
             transform: translateY(-5px);
         }
 
@@ -183,19 +183,6 @@
             transform: translateY(-50%);
             cursor: pointer;
             color: var(--gray);
-        }
-
-        .forgot-password {
-            display: block;
-            text-align: right;
-            margin-top: 0.5rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .forgot-password:hover {
-            text-decoration: underline;
         }
 
         .btn {
@@ -287,20 +274,20 @@
             border-color: #0077b5;
         }
 
-        .register-link {
+        .login-link {
             text-align: center;
             margin-top: 1.5rem;
             color: var(--gray);
             font-size: 0.9rem;
         }
 
-        .register-link a {
+        .login-link a {
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
         }
 
-        .register-link a:hover {
+        .login-link a:hover {
             text-decoration: underline;
         }
 
@@ -352,24 +339,6 @@
             }
         }
 
-        /* Auth Buttons */
-        .btn-auth {
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            text-decoration: none;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: rgba(67, 97, 238, 0.1);
-        }
-
         /* Status Message */
         #status {
             text-align: center;
@@ -387,6 +356,24 @@
         .error {
             color: #dc3545;
             background-color: rgba(220, 53, 69, 0.1);
+        }
+
+        /* Auth Buttons */
+        .btn-auth {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(67, 97, 238, 0.1);
         }
 
         /* Responsive */
@@ -408,11 +395,11 @@
                 justify-content: center;
             }
 
-            .login-container {
+            .register-container {
                 padding: 1rem;
             }
 
-            .login-card {
+            .register-card {
                 max-width: 100%;
             }
         }
@@ -441,14 +428,18 @@
     </header>
 
     <!-- Main Content -->
-    <div class="login-container">
-        <div class="login-card">
+    <div class="register-container">
+        <div class="register-card">
             <div class="card-header">
-                <h1>Welcome Back!</h1>
-                <p>Sign in to access your QuickFix Pro account</p>
+                <h1>Create an Account</h1>
+                <p>Join QuickFix Pro to book services or become a provider</p>
             </div>
             <div class="card-body">
-                <form id="loginForm">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+                    </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
@@ -456,31 +447,39 @@
                     <div class="form-group">
                         <label for="password">Password</label>
                         <div class="password-container">
-                            <input type="password" id="password" class="form-control" placeholder="Enter your password"
+                            <input type="password" id="password" class="form-control" placeholder="Create a password"
                                 required>
                             <i class="fas fa-eye toggle-password" onclick="togglePassword('password')"></i>
                         </div>
-                        <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="loginBtn">
-                        <span id="loginText">Sign In</span>
-                        <span class="spinner" id="loginSpinner" style="display: none;"></span>
+                    <div class="form-group">
+                        <label for="role">Account Type</label>
+                        <select id="role" class="form-control" required>
+                            <option value="">Select your role</option>
+                            <option value="user">I need services (Customer)</option>
+                            <option value="provider">I provide services (Professional)</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="registerBtn">
+                        <span id="registerText">Create Account</span>
+                        <span class="spinner" id="registerSpinner" style="display: none;"></span>
                     </button>
                     <div id="status"></div>
-                    <div class="divider">or continue with</div>
+                    <div class="divider">or sign up with</div>
                     <div class="social-login">
-                        <button type="button" class="social-btn facebook" aria-label="Sign in with Facebook">
+                        <button type="button" class="social-btn facebook" aria-label="Sign up with Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </button>
-                        <button type="button" class="social-btn google" aria-label="Sign in with Google">
+                        <button type="button" class="social-btn google" aria-label="Sign up with Google">
                             <i class="fab fa-google"></i>
                         </button>
-                        <button type="button" class="social-btn linkedin" aria-label="Sign in with LinkedIn">
+                        <button type="button" class="social-btn linkedin" aria-label="Sign up with LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </button>
                     </div>
-                    <div class="register-link">
-                        Don't have an account? <a href="register.html">Sign up</a>
+                    <div class="login-link">
+                        Already have an account? <a href="login.html">Sign in</a>
                     </div>
                 </form>
             </div>
@@ -500,52 +499,164 @@
         </div>
     </footer>
 
-   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+    <script type="module">
+        // Toggle password visibility
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const toggleIcon = document.querySelector(`#${fieldId} + .toggle-password`);
+            
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        }
 
-  // Your Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyCb0Su48jpXvNiMg0ubxMg7h7nWz8Irqvw",
-    authDomain: "quick-fix-4bdb7.firebaseapp.com",
-    projectId: "quick-fix-4bdb7",
-    storageBucket: "quick-fix-4bdb7.firebasestorage.app",
-    messagingSenderId: "981415952631",
-    appId: "1:981415952631:web:4473144b203bb4e92993f2",
-    measurementId: "G-E7L9VJJS2K"
-  };
+        // Handle registration
+        document.getElementById("registerForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const role = document.getElementById("role").value;
+            const status = document.getElementById("status");
+            const registerBtn = document.getElementById("registerBtn");
+            const registerText = document.getElementById("registerText");
+            const registerSpinner = document.getElementById("registerSpinner");
 
-  // Handle login form submit
-  document.getElementById("loginForm").addEventListener("submit", (e) => {
-    e.preventDefault();
+            // Show loading state
+            registerText.textContent = "Creating Account...";
+            registerSpinner.style.display = "inline-block";
+            registerBtn.disabled = true;
+            status.textContent = "";
+            status.className = "";
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+            try {
+                // Create user in Firebase Auth
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Logged in successfully
-        const user = userCredential.user;
+                // Store extra user info in Firestore
+                await setDoc(doc(db, "users", user.uid), {
+                    name: name,
+                    email: email,
+                    role: role,
+                    createdAt: new Date().toISOString()
+                });
 
-        // Create session in localStorage
-        localStorage.setItem("user", JSON.stringify({
-          uid: user.uid,
-          email: user.email
-        }));
+                // Show success message
+                status.textContent = "✅ Registration successful! Redirecting...";
+                status.className = "success";
 
-        // Redirect to home page
-        window.location.href = "index.html";
-      })
-      .catch((error) => {
-        alert("Invalid email or password");
-        console.error(error.code, error.message);
-      });
-  });
-</script>
+                // Redirect based on role
+                setTimeout(() => {
+                    if (role === "admin") {
+                        window.location.href = "admin-dashboard.html";
+                    } else if (role === "provider") {
+                        window.location.href = "provider-dashboard.html";
+                    } else {
+                        window.location.href = "user-dashboard.html";
+                    }
+                }, 1500);
 
+            } catch (error) {
+                console.error("Error:", error.message);
+                
+                // Friendly error messages
+                let errorMessage = error.message;
+                if (error.code) {
+                    switch (error.code) {
+                        case "auth/email-already-in-use":
+                            errorMessage = "This email is already registered. Please sign in.";
+                            break;
+                        case "auth/invalid-email":
+                            errorMessage = "Please enter a valid email address.";
+                            break;
+                        case "auth/weak-password":
+                            errorMessage = "Password should be at least 6 characters.";
+                            break;
+                    }
+                }
+                
+                status.textContent = "❌ " + errorMessage;
+                status.className = "error";
+                
+            } finally {
+                // Reset button state
+                registerText.textContent = "Create Account";
+                registerSpinner.style.display = "none";
+                registerBtn.disabled = false;
+            }
+        });
+
+        // Social login buttons
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const provider = this.classList.contains('facebook') ? 'Facebook' :
+                               this.classList.contains('google') ? 'Google' : 'LinkedIn';
+                alert(`Redirecting to ${provider} registration...`);
+            });
+        });
+    </script>
+    <p id="status"></p>
+
+    <script type="module">
+        // Firebase SDK imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+        // Your Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyCb0Su48jpXvNiMg0ubxMg7h7nWz8Irqvw",
+            authDomain: "quick-fix-4bdb7.firebaseapp.com",
+            projectId: "quick-fix-4bdb7",
+            storageBucket: "quick-fix-4bdb7.firebasestorage.app",
+            messagingSenderId: "981415952631",
+            appId: "1:981415952631:web:4473144b203bb4e92993f2",
+            measurementId: "G-E7L9VJJS2K"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Handle registration
+        document.getElementById("registerForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const role = document.getElementById("role").value;
+            const status = document.getElementById("status");
+
+            try {
+                // Create user in Firebase Auth
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Store extra user info in Firestore
+                await setDoc(doc(db, "users", user.uid), {
+                    name: name,
+                    email: email,
+                    role: role
+                });
+
+                status.textContent = "✅ Registration successful!";
+                status.style.color = "green";
+
+            } catch (error) {
+                console.error("Error:", error.message);
+                status.textContent = "❌ " + error.message;
+                status.style.color = "red";
+            }
+        });
+    </script>
+    
 </body>
 </html>
